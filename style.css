@@ -21,6 +21,7 @@ html{
     font-family: Arial, Helvetica, sans-serif;
 }
 
+
 main{
     background-color: var(--color-purple);
     height: 100vh;
@@ -122,4 +123,55 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
 
 }
 
-
+.rules {
+    position: absolute;
+    max-width: 90vw;
+    margin-top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 14px;
+    background-color: var(--color-lightgreen);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    transition: 1s;
+    opacity: 1;
+}
+.rules--opacity{
+    opacity: 0;
+}
+.rules p {
+    color: var(--color-purple);
+    font-family: Architects Daughter;
+}
+.rules__title {
+    color: var(--color-white);
+    text-shadow: var(--dec-shadow);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgba(0, 0, 0, 0.5);
+    margin: 10px 0;
+}
+.rules__list {
+margin: 0;
+padding: 20px;
+}
+.rules__list p{
+    text-shadow: var(--dec-shadow);
+    margin: 0;
+    color: var(--color-purple);
+    font-size: 16px;
+    font-family: Architects Daughter;
+}
+.rules__exit {
+    position: relative;
+    right: -44%;
+    top: -41px;
+}
+.rules__gif > img {
+    width: 230px;
+}
+.hidden {
+    display: none;
+}
