@@ -211,9 +211,6 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     overflow: visible;
 }
 
-.tower__pins > div:before {
-    
-}
 
 .disk {
     height: 16px;
