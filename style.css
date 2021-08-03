@@ -66,13 +66,24 @@ main section.section_telaInicial div.container_telaInicial div div.container_qua
 }
 
 main section.section_telaInicial div.container_telaInicial div div.container_quantidadeDiscos div.selectDiscos {
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid var(--color-white);;
+    border-radius: 50px;
+    
+
 }
 
 main section.section_telaInicial div.container_telaInicial div div.container_quantidadeDiscos div.selectDiscos button {
     border: none;
     background-color: transparent;
+    font-size: 30px;
+    padding: 5px 10px;
+    color: var(--color-white);
+}
+
+main section.section_telaInicial div.container_telaInicial div div.container_quantidadeDiscos div.selectDiscos span {
+    font-size: 30px;
+    margin: 0 30px;
+    color: var(--color-white);
 }
 
 main section.section_telaInicial div.container_telaInicial div.container_footer p{
@@ -88,21 +99,25 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
 }
 
 main section.section_telaInicial div.container_telaInicial div.container_footer div.container_buttons{
-
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 main section.section_telaInicial div.container_telaInicial div.container_footer div.container_buttons button{
-    height: 36px;
-    width: 157px;
-    background: #587769;
-    font-size: 21px;
-    line-height: 29px;
-    color: #FFFFFF;
+    background: var(--color-darkgreen);
     border: 1px solid #000000;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 50px;
+    color: #FFFFFF;
     font-family: 'Architects Daughter', cursive;
+    font-size: 21px;
     font-weight: bold;
+    height: 36px;
+    line-height: 29px;
+    margin: 0 5px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 157px;
     -webkit-text-stroke: 1px black;
 
 }
