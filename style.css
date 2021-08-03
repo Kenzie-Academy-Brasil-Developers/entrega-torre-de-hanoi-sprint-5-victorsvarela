@@ -123,3 +123,31 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
 }
 
 
+
+main section.section_torre{
+    max-width: 80vw;
+    height: 100vh;
+    border: 1px solid black;
+    margin: 10px auto;
+}
+
+main section.section_torre div.container_torre{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+main section.section_torre div.container_torre div.select_torre{
+    width: 33%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 50px solid black;
+}
+
+main section.section_torre div.container_torre div.select_torre div.palito_torre{
+    width: 10px;
+    height: 100%;
+    background-color: black;
+}
