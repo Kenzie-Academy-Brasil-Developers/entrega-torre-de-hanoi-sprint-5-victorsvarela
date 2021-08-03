@@ -197,13 +197,10 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     width: 100%;
     display: flex;
     justify-content: space-between;
-    padding: 0px 40px;
     box-sizing: border-box;
 }
 .tower__pins > div {
-    width: 6px;
-    background-color: #F0C52C;
-    border-radius: 8px 8px 0 0;
+    width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -211,6 +208,16 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     overflow: visible;
 }
 
+.tower__pins > div:before {
+    content: "";
+    position: absolute;
+    height: 77%;
+    width: 8px;
+    border-radius: 8px 8px 0 0;
+    background-color: #F0C52C;
+    z-index: -1;
+    
+}
 
 .disk {
     height: 16px;
