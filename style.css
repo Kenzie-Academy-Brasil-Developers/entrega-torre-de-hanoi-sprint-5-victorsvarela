@@ -210,6 +210,11 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     align-items: center;
     overflow: visible;
 }
+
+.tower__pins > div:before {
+    
+}
+
 .disk {
     height: 16px;
     margin-bottom: 3px;
@@ -242,6 +247,10 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
 .disk7 {
     width: 85px;
     background-color: var(--color-white);
+}
+
+.diskColorRed {
+    background-color: red
 }
 
 .tower__base {

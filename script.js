@@ -9,6 +9,12 @@ const btnPlus = document.getElementById('btnPlus');
 const gameLevelDisplay = document.querySelector('.selectDiscos > span');
 const towerPins = document.querySelectorAll('.tower__pins > div');
 const starterPin = document.getElementById('starterPin');
+const selectPin = document.querySelectorAll('.selectPin');
+const fatherPins = document.getElementById('father_pins')
+
+let currentDisk = undefined;
+let counterClicks = 0
+let tamCurrentDisk = 0
 
 
 const hideSection = (section) => {
@@ -71,3 +77,50 @@ startGameButton.addEventListener('click', () => {
     setTimeout(showSection(gameScreen), 400)
 })
 
+fatherPins.addEventListener('click', (event) => {
+    // vou dar a primeira clicada
+    
+    let pinSelect = event.currentTarget
+    
+    console.log(pinSelect)
+    
+    // vou conferir se a torre não está vazia
+    if (event.target.firstElementChild !== null){
+        counterClicks = 1
+    }
+    if(counterClicks === 0){
+        console.log('Você não pode selecionar uma coluna vazia.')
+    }
+    // se não estiver vazia, pego o primeiro elemento da torre
+    else{
+        // vou para o segundo clique
+        // confiro se a torre do segundo clique está vazia
+        if (currentDisk === undefined){
+            currentDisk = event.target.firstElementChild
+            tamCurrentDisk = currentDisk.clientWidth
+            counterClicks += 1
+
+            //vou trocar a cor do disco que peguei para eu saber que aquele disco está na minha mão
+            currentDisk.classList.add('diskColorRed')
+        }else{
+            if (pinSelect.firstElementChild !== null){
+                pinSelect.appendChild(currentDisk)
+                counterClicks = 0
+                currentDisk = undefined
+            }
+        }
+        // se não estiver vazia, confiro se o tamanho do disco que está lá é maior que o disco atual
+
+
+    }
+    
+
+})
+
+
+
+
+
+
+
+// zerar a variável counterClicks para 0 e currentDisk para undefined
