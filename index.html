@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+
 
     <!-- VICTOR -->
 
@@ -36,7 +36,7 @@
                     </div>
                     <p>selecione o número de discos</p>
                     <div class="container_buttons">
-                        <button>Iniciar Jogo</button>
+                        <button id="startGame">Iniciar Jogo</button>
                         <button id="rules">Regras</button>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
 
 
     <!-- HERIC -->
-    <section class="rules hidden rules--opacity">
+    <section class="rules hidden none">
         <h2 class="rules__title">Regras</h2>
         <div class="rules__exit">X</div>
         <ul class="rules__list">
@@ -63,6 +63,16 @@
             <img src="assets/gif/hanoi.gif" alt="exemplo de resolução">
             <figcaption class="hidden">Exemplo de resolução</figcaption>
         </figure>
+    </section>
+    <section id="gameScreen" class="game-screen hidden none">
+        <div class="tower">
+            <div class="tower__pins">
+                <div id="starterPin"></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="tower__base"></div>
+        </div>
     </section>
     <!-- HERIC -->
 
