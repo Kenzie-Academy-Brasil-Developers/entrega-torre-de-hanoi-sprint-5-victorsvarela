@@ -72,10 +72,9 @@ const setPinsHeight = (numberOfDisks) => {
 const createDisks = (diskAmount) => {
     starterPin.innerHTML = ""
 
-    for (let i = 1; i <= diskAmount; i++) {
+    for (let i = diskAmount; i > 0; i--) {
         let disc = document.createElement('div');
         disc.classList.add('disk' ,`disk${i}`);
-
         starterPin.appendChild(disc);
     }
 }
