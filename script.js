@@ -15,9 +15,12 @@ const winningScreen = document.querySelector('.winning-screen')
 const backToMenu = document.getElementById('backToMenu');
 const nextLevel = document.getElementById('nextLevel')
 
+
+
 let currentDisk = undefined;
 let counterClicks = 0
-let tamCurrentDisk = 0
+let sizeDiskOrigin = 0
+let sizeDiskDestination = 0
 
 
 const hideSection = (section) => {
@@ -84,45 +87,64 @@ startGameButton.addEventListener('click', () => {
     setTimeout(showSection(gameScreen), 400)
 })
 
+
+
+const checkFirstClick = () => {
+    
+}
+
+/* for (let i = 0; i < 3; i++){
+    selectPin[i].addEventListener('click', (event) => {
+        console.log(event.currentTarget)
+    })
+} */
+
 fatherPins.addEventListener('click', (event) => {
     // vou dar a primeira clicada
     
-    let pinSelect = event.currentTarget
+    let pinSelect = event.target
     
-    console.log(pinSelect)
-    
-    // vou conferir se a torre não está vazia
-    if (event.target.firstElementChild !== null){
+
+    if (event.currentTarget.firstElementChild !== null){
+        // verifica o primeiro click
         counterClicks = 1
     }
-    if(counterClicks === 0){
-        console.log('Você não pode selecionar uma coluna vazia.')
-    }
-    // se não estiver vazia, pego o primeiro elemento da torre
-    else{
-        // vou para o segundo clique
-        // confiro se a torre do segundo clique está vazia
+    if (counterClicks === 0){
+        // força o primeiro click
+        alert('Sua jogada consiste em selecionar uma torre vazia para selecionar o disco. Tente selecionar uma torre com discos para fazer o movimento.')
+    }else{
+        // entra no primeiro click
+        
         if (currentDisk === undefined){
             currentDisk = event.target.firstElementChild
-            tamCurrentDisk = currentDisk.clientWidth
+            sizeDiskOrigin = currentDisk.clientWidth
             counterClicks += 1
-
-            //vou trocar a cor do disco que peguei para eu saber que aquele disco está na minha mão
             currentDisk.classList.add('diskColorRed')
         }else{
-            if (pinSelect.firstElementChild !== null){
+            // verificar o segundo click, se a torre está vazia ou se o filho é maior ou menor
+            if (pinSelect.firstChild !== null){
+                sizeDiskDestination = event.target.firstElementChild
+                sizeDiskDestination = sizeDiskDestination.clientWidth
+                if (sizeDiskOrigin > sizeDiskDestination){
+                    currentDisk.classList.remove('diskColorRed')
+                    currentDisk = undefined
+                    alert('Jogada Inválida! Sua jogada consiste em posicionar um disco maior sobre um disco menor.')
+                }
+                
+            }
+            if (currentDisk !== undefined){
+                currentDisk.classList.remove('diskColorRed')
                 pinSelect.appendChild(currentDisk)
-                counterClicks = 0
                 currentDisk = undefined
+                counterClicks = 0
             }
         }
-        // se não estiver vazia, confiro se o tamanho do disco que está lá é maior que o disco atual
-
-
     }
     
-
+    
 })
+
+
 
 const winningCondition = (evt) => {
     const target = evt.target
@@ -133,7 +155,8 @@ const winningCondition = (evt) => {
     }
 }
 
-fatherPins.addEventListener('click', winningCondition)
+//fatherPins.addEventListener('click', winningCondition)
+
 
 const resetToStartingPage = () => {
     gameLevel = 1;;
