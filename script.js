@@ -104,7 +104,7 @@ fatherPins.addEventListener('click', (event) => {
     let pinSelect = event.target
     
 
-    if (event.currentTarget.firstElementChild !== null){
+    if (event.currentTarget.lastElementChild !== null){
         // verifica o primeiro click
         counterClicks = 1
     }
@@ -115,14 +115,14 @@ fatherPins.addEventListener('click', (event) => {
         // entra no primeiro click
         
         if (currentDisk === undefined){
-            currentDisk = event.target.firstElementChild
+            currentDisk = event.target.lastElementChild
             sizeDiskOrigin = currentDisk.clientWidth
             counterClicks += 1
             currentDisk.classList.add('diskColorRed')
         }else{
             // verificar o segundo click, se a torre está vazia ou se o filho é maior ou menor
-            if (pinSelect.firstChild !== null){
-                sizeDiskDestination = event.target.firstElementChild
+            if (pinSelect.lastChild !== null){
+                sizeDiskDestination = event.target.lastElementChild
                 sizeDiskDestination = sizeDiskDestination.clientWidth
                 if (sizeDiskOrigin > sizeDiskDestination){
                     currentDisk.classList.remove('diskColorRed')
