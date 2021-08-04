@@ -179,7 +179,8 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
 .game-screen {
     background-image: url(assets/gif/image.png);
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
+    justify-content: flex-end;
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;
@@ -267,6 +268,27 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
             background-color: #F0C52C;
             border-radius: 10px;
         }
+
+
+.contador_jogadas {
+    align-items: center;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+}
+
+.contador_jogadas > h2{
+    margin: 10px 0;
+}
+
+.contador_jogadas > span{
+    margin-left: 15px;
+}
+
+
+
 
 .winning-screen {
     text-align: center;
