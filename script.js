@@ -92,19 +92,16 @@ const checkFirstClick = () => {
     
 }
 
-/* for (let i = 0; i < 3; i++){
+for (let i = 0; i < 3; i++){
     selectPin[i].addEventListener('click', (event) => {
-        console.log(event.currentTarget)
-    })
-} */
-
-fatherPins.addEventListener('click', (event) => {
-    // vou dar a primeira clicada
+        // vou dar a primeira clicada
     
     let pinSelect = event.target
-    
 
-    if (event.currentTarget.lastElementChild !== null){
+    
+    
+    
+    if (event.target.lastElementChild !== null){
         // verifica o primeiro click
         counterClicks = 1
     }
@@ -113,6 +110,56 @@ fatherPins.addEventListener('click', (event) => {
         alert('Sua jogada consiste em selecionar uma torre vazia para selecionar o disco. Tente selecionar uma torre com discos para fazer o movimento.')
     }else{
         // entra no primeiro click
+        if (currentDisk === undefined){
+            currentDisk = event.target.lastElementChild
+            sizeDiskOrigin = currentDisk.clientWidth
+            counterClicks += 1
+            currentDisk.classList.add('diskColorRed')
+        }else{
+            // verificar o segundo click, se a torre está vazia ou se o filho é maior ou menor
+            if (pinSelect.lastChild !== null){
+                sizeDiskDestination = event.target.lastElementChild
+                sizeDiskDestination = sizeDiskDestination.clientWidth
+                if (sizeDiskOrigin > sizeDiskDestination){
+                    currentDisk.classList.remove('diskColorRed')
+                    currentDisk = undefined
+                    alert('Jogada Inválida! Sua jogada consiste em posicionar um disco maior sobre um disco menor.')
+                }
+                
+            }
+            if (currentDisk !== undefined){
+                currentDisk.classList.remove('diskColorRed')
+                pinSelect.appendChild(currentDisk)
+                currentDisk = undefined
+                counterClicks = 0
+            }
+        }
+    }
+    })
+}
+
+/* fatherPins.addEventListener('click', (event) => {
+    // vou dar a primeira clicada
+    
+    let pinSelect = event.target
+
+    
+    
+    
+    if (event.target.lastElementChild !== null){
+        // verifica o primeiro click
+        counterClicks = 1
+    }
+    if (counterClicks === 0){
+        // força o primeiro click
+        alert('Sua jogada consiste em selecionar uma torre vazia para selecionar o disco. Tente selecionar uma torre com discos para fazer o movimento.')
+    }else{
+        // entra no primeiro click
+
+        if (event.target.classList.contains('selectPin') === false){
+
+        }
+
         
         if (currentDisk === undefined){
             currentDisk = event.target.lastElementChild
@@ -141,7 +188,7 @@ fatherPins.addEventListener('click', (event) => {
     }
     
     
-})
+}, false) */
 
 
 
