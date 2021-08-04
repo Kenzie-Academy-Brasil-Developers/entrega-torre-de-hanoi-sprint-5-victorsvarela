@@ -93,11 +93,6 @@ startGameButton.addEventListener('click', () => {
 })
 
 
-
-const checkFirstClick = () => {
-
-}
-
 for (let i = 0; i < 3; i++){
     selectPin[i].addEventListener('click', (event) => {
         // vou dar a primeira clicada
@@ -108,6 +103,7 @@ for (let i = 0; i < 3; i++){
         // verifica o primeiro click
         counterClicks = 1
     }
+
     if (counterClicks === 0){
         // força o primeiro click
         alert('Sua jogada consiste em selecionar uma torre vazia para selecionar o disco. Tente selecionar uma torre com discos para fazer o movimento.')
@@ -234,4 +230,4 @@ const goToNextLevel = () => {
     showSection(gameScreen)
 }
 nextLevel.addEventListener('click', goToNextLevel)
-// zerar a variável counterClicks para 0 e currentDisk para undefined
+
