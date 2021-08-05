@@ -18,8 +18,6 @@
 
 
 
-    <!-- VICTOR -->
-
     <main class="main">
         <section class="section_telaInicial">
             <div class="container_telaInicial">
@@ -34,7 +32,7 @@
                             <button class="btnPlus" id="btnPlus">+</button>
                         </div>
                     </div>
-                    <p>selecione o número de discos</p>
+                    <p>selecione o nível</p>
                     <div class="container_buttons">
                         <button id="startGame">Iniciar Jogo</button>
                         <button id="rules">Regras</button>
@@ -42,57 +40,55 @@
                 </div>
             </div>
         </section>
+        <section class="rules hidden none">
+            <h2 class="rules__title">Regras</h2>
+            <div class="rules__exit">X</div>
+            <ul class="rules__list">
+                <li><p>O objetivo do jogo é movimentar todas as peças de uma torre para outra qualquer;</p></li>
+                <li><p>Somente uma peça pode ser movimentada de cada vez;</p></li>
+                <li><p>Não é possivel movimentar uma peça que esteja embaixo de outra;</p></li>
+                <li><p>Uma peça não pode ser colocada em cima de uma peça menor que ela.</p></li>
+            </ul>
+            <p>Tente completar o jogo com o menor número de jogadas possíveis! Boa sorte!</p>
+            <figure class="rules__gif">
+                <img src="assets/gif/hanoi.gif" alt="exemplo de resolução">
+                <figcaption class="hidden">Exemplo de resolução</figcaption>
+            </figure>
+        </section>
+        <section id="gameScreen" class="game-screen hidden none">
+            <h2 class="game-screen__title" id="gameTitle"></h2>
+            <div class="tower">
+                <div id="father_pins" class="tower__pins">
+                    <div class="selectPin" id="starterPin"></div>
+                    <div class="selectPin"></div>
+                    <div class="selectPin"></div>
+                </div>
+                <div class="tower__base"></div>
+            </div>
+        </section>
+        <section id="sectionContador" class="section_contador hidden none">
+            <div>
+                <div id="contador_jogadas" class="contador_jogadas">
+                    <h2>JOGADAS: </h2>
+                    <span id="contador">0</span>
+                </div>
+                <div class="contador_timer">
+                    <h2>TIMER: </h2>
+                    <span id="timer">00:00</span>
+                    <p>seg</p>
+                </div>
+            </div>
+        </section>
+        <section class="winning-screen hidden none">
+            <h2 class="winning-screen__title">Parabéns, você venceu!!</h2>
+            <p class="winning-screen__time">Tempo: <span  id="timeElapsed"></span></p>
+            <p class="winning-screen__moves">Jogadas: <span  id="movesDone"> </span></p>
+            <button id="backToMenu" class="winning-screen__backbutton winning__buttons">Voltar para o menu inicial</button>
+            <button id="nextLevel" class="winning-screen__nextbutton winning__buttons">Próximo nivel</button>
+        </section>
     </main>
+   
 
-    <!-- VICTOR -->
-
-
-
-    <!-- HERIC -->
-    <section class="rules hidden none">
-        <h2 class="rules__title">Regras</h2>
-        <div class="rules__exit">X</div>
-        <ul class="rules__list">
-            <li><p>O objetivo do jogo é movimentar todas as peças de uma torre para outra qualquer;</p></li>
-            <li><p>Somente uma peça pode ser movimentada de cada vez;</p></li>
-            <li><p>Não é possivel movimentar uma peça que esteja abaixo de outra;</p></li>
-            <li><p>Uma peça maior não pode ser colocada em cima de uma menor.</p></li>
-        </ul>
-        <p>Tente completar o jogo com o menor número de jogadas possíveis! Boa sorte!</p>
-        <figure class="rules__gif">
-            <img src="assets/gif/hanoi.gif" alt="exemplo de resolução">
-            <figcaption class="hidden">Exemplo de resolução</figcaption>
-        </figure>
-    </section>
-    <section id="gameScreen" class="game-screen hidden none">
-        <div class="tower">
-            <div id="father_pins" class="tower__pins">
-                <div class="selectPin" id="starterPin"></div>
-                <div class="selectPin"></div>
-                <div class="selectPin"></div>
-            </div>
-            <div class="tower__base"></div>
-        </div>
-    </section>
-    <section id="sectionContador" class="section_contador hidden none">
-        <div>
-            <div id="contador_jogadas" class="contador_jogadas">
-                <h2>JOGADAS: </h2>
-                <span id="contador">0</span>
-            </div>
-            <div class="contador_timer">
-                <h2>TIMER: </h2>
-                <span id="timer">0</span>
-                <p>seg</p>
-            </div>
-        </div>
-    </section>
-    <section class="winning-screen hidden none">
-        <h2 class="winning-screen__title">Parabéns, você venceu!!</h2>
-        <button id="backToMenu" class="winning-screen__backbutton">Voltar para o menu inicial</button>
-        <button id="nextLevel" class="winning-screen__nextbutton">Próximo nivel</button>
-    </section>
-    <!-- HERIC -->
 
 
     <script src="script.js"></script>

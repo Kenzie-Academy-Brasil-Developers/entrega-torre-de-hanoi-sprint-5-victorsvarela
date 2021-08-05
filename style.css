@@ -131,6 +131,7 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     margin-top: 10px;
     left: 50%;
     transform: translateX(-50%);
+    border: 1px solid var(--color-black);
     border-radius: 14px;
     background-color: var(--color-lightgreen);
     display: flex;
@@ -145,6 +146,7 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     .rules p {
         color: var(--color-purple);
         font-family: Architects Daughter;
+        text-shadow: var(--dec-shadow);
     }
     .rules__title {
         color: var(--color-white);
@@ -185,17 +187,27 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
+    width: 300px;
     height: 350px;
     bottom: 25%;
     left: 50%;
     transform: translateX(-50%);
     transition: 1s;
 }
-
+    .game-screen__title {
+        position: absolute;
+        left: 50%;
+        top: -25%;
+        transform: translateX(-50%);
+        color: var(--color-lightgreen);
+        text-shadow: var(--dec-shadow);
+        -webkit-text-stroke: 1.1px black;
+        font-size: 36px;
+    }
     .tower {
         display: flex;
         flex-direction: column;
-        width: 300px;
+        width: 100%;
     }
 
         .tower__pins {
@@ -228,34 +240,36 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
                 height: 16px;
                 margin-bottom: 3px;
                 border-radius: 5px;
+                text-align: center;
+                color: var(--color-black);
             }
             .disk1 {
                 width: 25px;
-                background-color: var(--color-white);
+                background-color: #E9FF70;
             }
             .disk2 {
                 width: 35px;
-                background-color: var(--color-black);
+                background-color: #FFD670;
             }
             .disk3 {
                 width: 45px;
-                background-color: var(--color-white);
+                background-color: #FF9770;
             }
             .disk4 {
                 width: 55px;
-                background-color: var(--color-black);
+                background-color: #FF70A6;
             }
             .disk5 {
                 width: 65px;
-                background-color: var(--color-white);
+                background-color: #70D6FF;
             }
             .disk6 {
                 width: 75px;
-                background-color: var(--color-black);
+                background-color: #5DB1D3;
             }
             .disk7 {
                 width: 85px;
-                background-color: var(--color-white);
+                background-color: #457A9A;
             }
 
             .diskColorRed {
@@ -274,7 +288,7 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     bottom: 10px;
     position: absolute;
     width: 100%;
-
+    transition-duration: 1s;
 }
 
 .contador_jogadas, .contador_timer {
@@ -322,15 +336,117 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     left: 50%;
     top: 30%;
     width: 300px;
-    height: 200px;
+    height: 250px;
     transform: translateX(-50%);
 }
     .winning-screen__title {
         font-size: 30px;
+        margin-top: 10px;
+        margin-bottom: 0px;
+    }
+    .winning-screen__time {
+        margin: 0px;
+    }
+    .winning-screen__moves {
+        margin: 0px;
+    }
+    .winning__buttons {
+        background: var(--color-darkgreen);
+        border: 1px solid #000000;
+        font-size: 15px;
+        border-radius: 50px;
+        color: var(--color-white);
+        font-family: 'Architects Daughter', cursive;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        width: 157px;
+        width: 200px;
+        line-height: 30px;
+        margin: 5px 0px;
     }
 .hidden {
     opacity: 0;
 }
 .none {
     display: none;
+}
+
+@media (min-width: 768px){
+    button {
+        cursor: pointer;
+    }
+    main section.section_telaInicial div.container_telaInicial > div > h1{
+        font-size: 48px;
+    }
+    main section.section_telaInicial div.container_telaInicial div.container_footer p {
+        font-size: 30px;
+    }
+    main section.section_telaInicial div.container_telaInicial div.container_footer div.container_buttons button {
+        font-size: 24px;
+        height: 45px;
+        width: 170px;
+    }
+    .rules {
+        width: 500px;
+        top: 13%;
+    }
+    .rules__title {
+        font-size: 34px;
+    }
+    .rules p {
+        font-size: 20px;
+    }
+        .rules__exit {
+            cursor: pointer;
+        }
+    .game-screen {
+        bottom: 35%;
+        width: 500px;
+    }
+        .game-screen__title {
+            font-size: 60px;
+            top: -55%;
+        }
+        .tower__pins {
+            padding: 0px 75px;
+        }
+            .disk1 {
+                width: 55px;
+            }
+            .disk2 {
+                width: 65px;
+            }
+            .disk3 {
+                width: 75px;
+            }
+            .disk4 {
+                width: 85px;
+            }
+            .disk5 {
+                width: 95px;
+            }
+            .disk6 {
+                width: 105px;
+            }
+            .disk7 {
+                width: 115px;
+            }
+    .section_contador span{
+        font-size: 32px;
+    }
+    .contador_timer p {
+        font-size: 32px;
+    }
+
+    .winning-screen {
+        width: 400px;
+    }
+        .winning-screen p {
+            font-size: 20px;
+        }
+        .winning__buttons {
+            margin-top: 20px;
+            font-size: 20px;
+            width: 250px;
+            line-height: 35px;
+        }
 }
