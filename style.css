@@ -295,7 +295,7 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
     align-items: center;
     display: flex;
     justify-content: center;
-    font-size: 24px;
+    font-size: 15px;
 }
 
 .contador_jogadas > h2, .contador_timer > h2{
