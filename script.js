@@ -7,7 +7,6 @@ const gameScreen = document.getElementById('gameScreen');
 const btnMinus = document.getElementById('btnMinus');
 const btnPlus = document.getElementById('btnPlus');
 const gameLevelDisplay = document.querySelector('.selectDiscos > span');
-const towerPins = document.querySelectorAll('.tower__pins > div');
 const starterPin = document.getElementById('starterPin');
 const selectPin = document.querySelectorAll('.selectPin');
 const fatherPins = document.getElementById('father_pins')
@@ -16,7 +15,11 @@ const backToMenu = document.getElementById('backToMenu');
 const nextLevel = document.getElementById('nextLevel')
 const sectionContadorDeJogadas = document.getElementById('sectionContador')
 const contadorDeJogadas = document.getElementById('contador_jogadas')
-const span = document.getElementById('contador')
+const contador = document.getElementById('contador')
+const timerShow = document.getElementById('timer')
+const levelTitle = document.getElementById('gameTitle')
+const timeElapsedDisplay = document.getElementById('timeElapsed')
+const movesDoneDisplay = document.getElementById('movesDone')
 
 
 
@@ -25,7 +28,10 @@ let counterClicks = 0
 let sizeDiskOrigin = 0
 let sizeDiskDestination = 0
 let contadorJogadas = 0
+let victory = false
 
+let minutes = 0;
+let seconds = 0;
 
 const hideSection = (section) => {
     section.classList.add('hidden');
@@ -37,8 +43,6 @@ const showSection = (section) => {
     section.classList.remove('none');
     setTimeout(() => {
         section.classList.remove('hidden')
-        sectionContadorDeJogadas.classList.remove('hidden')
-        sectionContadorDeJogadas.classList.remove('none')
     }, 100);
 };
 
@@ -68,35 +72,45 @@ ruleCloseButton.addEventListener('click', () => {
 });
 
 const setPinsHeight = (numberOfDisks) => {
-    let height = (numberOfDisks * 18) + 20 + 'px'
+    let height = (numberOfDisks * 18) + 20 + 'px';
 
-    for (let i = 0; i < towerPins.length; i++) {
-        towerPins[i].style.height = height
-    }
-}
+    for (let i = 0; i < selectPin.length; i++) {
+        selectPin[i].style.height = height;
+        selectPin[i].innerHTML = "";
+    };
+};
 
 const createDisks = (diskAmount) => {
-    starterPin.innerHTML = ""
 
     for (let i = diskAmount; i > 0; i--) {
         let disc = document.createElement('div');
+
         disc.classList.add('disk', `disk${i}`);
         starterPin.appendChild(disc);
-    }
+    };
+};
+
+const createTitle = (level) => {
+    levelTitle.innerText = `Nível ${level}`
+}
+
+const startGame = () => {
+    victory = false;
+    contadorJogadas = 0;
+    contador.innerText = 0;
+    createTitle(gameLevel)
+    setPinsHeight(gameLevel);
+    createDisks(gameLevel);
+    setTimeout(timer(), 400)
 }
 
 startGameButton.addEventListener('click', () => {
-    hideSection(startingPage)
-    setPinsHeight(gameLevel)
-    createDisks(gameLevel)
-    setTimeout(showSection(gameScreen), 400)
-})
-
-
-
-const checkFirstClick = () => {
-
-}
+    hideSection(startingPage);
+    startGame()
+    timerShow.innerText = '00:00'
+    setTimeout(showSection(gameScreen), 400);
+    setTimeout(showSection(sectionContadorDeJogadas), 400);
+});
 
 for (let i = 0; i < 3; i++){
     selectPin[i].addEventListener('click', (event) => {
@@ -136,12 +150,33 @@ for (let i = 0; i < 3; i++){
                 currentDisk = undefined
                 counterClicks = 0
                 contadorJogadas++
-                span.innerText = contadorJogadas
+                contador.innerText = contadorJogadas
                 
             }
         }
     }
     })
+}
+
+const timer = () => {
+    const timerCount = setInterval(counter, 1000)
+    seconds = 0;
+    minutes = 0;
+
+    function counter() {
+        if (victory === true) {
+            clearInterval(timerCount)
+        }
+        if (seconds === 59) {
+            seconds = 0;
+            minutes++;
+        } else {
+            seconds++
+        }
+        let secondsString = seconds.toLocaleString('pt-BR', {minimumIntegerDigits: 2, useGrouping:false})
+        let minutesString = minutes.toLocaleString('pt-BR', {minimumIntegerDigits: 2, useGrouping:false})
+        timerShow.innerText = minutesString + ':' + secondsString  
+    }
 }
 
 
@@ -173,15 +208,7 @@ for (let i = 0; i < 3; i++){
                 sizeDiskOrigin = currentDisk.clientWidth
                 counterClicks += 1
                 currentDisk.classList.add('diskColorRed')
-            } else {
-                // verificar o segundo click, se a torre está vazia ou se o filho é maior ou menor
-                if (pinSelect.lastChild !== null) {
-                    sizeDiskDestination = event.target.lastElementChild
-                    sizeDiskDestination = sizeDiskDestination.clientWidth
-                    if (sizeDiskOrigin > sizeDiskDestination) {
-                        currentDisk.classList.remove('diskColorRed')
-                        currentDisk = undefined
-                        alert('Jogada Inválida! Sua jogada consiste em posicionar um disco maior sobre um disco menor.')
+            } else {transition: 1s; alert('Jogada Inválida! Sua jogada consiste em posicionar um disco maior sobre um disco menor.')
                     }
 
                 }
@@ -204,34 +231,41 @@ for (let i = 0; i < 3; i++){
 
 }) */
 
-
+const showResults = () => {
+    timeElapsedDisplay.innerText = timerShow.innerText;
+    movesDoneDisplay.innerText = contadorJogadas;
+    };
 
 const winningCondition = (evt) => {
     const target = evt.target
 
     if (target !== starterPin && target.childElementCount === gameLevel) {
+        victory = true
         showSection(winningScreen)
         hideSection(gameScreen)
+        hideSection(sectionContadorDeJogadas)
+        showResults()
     }
 }
 
-//fatherPins.addEventListener('click', winningCondition)
-
+fatherPins.addEventListener('click', winningCondition)
 
 const resetToStartingPage = () => {
-    gameLevel = 1;;
+    gameLevel = 1;
     gameLevelDisplay.innerText = gameLevel;
     hideSection(winningScreen)
     showSection(startingPage)
 }
-backToMenu.addEventListener('click', resetToStartingPage)
+backToMenu.addEventListener('click', resetToStartingPage);
 
 const goToNextLevel = () => {
-    gameLevel++
-    hideSection(winningScreen)
-    setPinsHeight(gameLevel)
-    createDisks(gameLevel)
-    showSection(gameScreen)
-}
-nextLevel.addEventListener('click', goToNextLevel)
-// zerar a variável counterClicks para 0 e currentDisk para undefined
+    gameLevel++;
+    startGame()
+    timerShow.innerText = '00:00'
+    hideSection(winningScreen);
+    showSection(gameScreen);
+    showSection(sectionContadorDeJogadas);
+
+};
+nextLevel.addEventListener('click', goToNextLevel);
+
