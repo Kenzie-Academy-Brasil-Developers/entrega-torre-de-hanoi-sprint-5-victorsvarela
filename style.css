@@ -369,6 +369,9 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
 .none {
     display: none;
 }
+.disabled {
+    background-color: gray;
+}
 
 @media (min-width: 768px){
     button {
@@ -449,4 +452,7 @@ main section.section_telaInicial div.container_telaInicial div.container_footer 
             width: 250px;
             line-height: 35px;
         }
+    .disabled {
+        cursor: not-allowed;
+    }
 }

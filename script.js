@@ -96,6 +96,8 @@ const createTitle = (level) => {
 
 const startGame = () => {
     victory = false;
+    nextLevel.disabled = false
+    nextLevel.classList.remove("disabled")
     contadorJogadas = 0;
     contador.innerText = 0;
     createTitle(gameLevel)
@@ -241,6 +243,11 @@ const winningCondition = (evt) => {
     const target = evt.target
 
     if (target !== starterPin && target.childElementCount === gameLevel) {
+        if (gameLevel === 7) {
+            nextLevel.disabled = true
+            nextLevel.classList.add("disabled")
+        }
+
         victory = true
         showSection(winningScreen)
         hideSection(gameScreen)
